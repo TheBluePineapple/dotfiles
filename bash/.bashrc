@@ -8,6 +8,7 @@
 alias ls='ls --color=auto'
 set -o vi
 alias la='ls -lah'
+alias resa="echo 'awesome.restart()' | awesome-client"
 
 #export PATH="/usr/bin/librewolf:$HOME/.local/bin/lvim:$HOME/.local/bin/lvide:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
@@ -32,5 +33,6 @@ fi
 if [ -f /home/blue/.config/synth-shell/better-history.sh ] && [ -n "$( echo $- | grep i )" ]; then
 	source /home/blue/.config/synth-shell/better-history.sh
 fi
+
 
 pfetch
