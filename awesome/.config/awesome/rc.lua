@@ -283,7 +283,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "e", function()
     awful.util.spawn(terminal.." -e ranger") end,
       {description = "launch ranger", group = "launcher"}),
-    
+     
     -- mod4 super r is default
     --awful.key({ modkey }, "a", function()
     --awful.util.spawn(terminal.." -e echo 'awesome.restart()' | awesome-client") end,
