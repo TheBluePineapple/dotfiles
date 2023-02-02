@@ -112,6 +112,40 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
 
+--not currently in use
+local mybatterybar = wibox.widget {
+  {
+    min_value = 0,
+    max_value = 100,
+    value = 0,
+    paddings = 1,
+    border_width = 1,
+    forced_width = 50,
+    border_color = "#0000ff",
+    id = "mypb",
+    widget = wibox.widget.progressbar,
+  },
+  {
+    id = "mytb",
+    text = "100%",
+    widget = wibox.widget.textbox,
+  },
+  layout = wibox.layout.stack,
+  set_battery = function(self, val)
+    self.mytb.text = tonumber(val).."%"
+    self.mypb.value = tonumber(val)
+  end,
+}
+gears.timer {
+  timeout = 10,
+  call_now = true,
+  autostart = true,
+  callback = function()
+    --read it from /sys/class/power_supply/ 
+    -- mybatterybar.battery =
+  end
+}
+
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
                     awful.button({ }, 1, function(t) t:view_only() end),
@@ -238,6 +272,27 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+    awful.key({ modkey }, "b", function()
+    awful.util.spawn("librewolf") end,
+      {description = "launch librewolf", group = "launcher"}),
+  
+    awful.key({ modkey }, "v", function()
+    awful.util.spawn("lvide") end,
+      {description = "launch lunarvim in lvde", group = "launcher"}),
+
+    awful.key({ modkey }, "e", function()
+    awful.util.spawn(terminal.." -e ranger") end,
+      {description = "launch ranger", group = "launcher"}),
+    
+    -- mod4 super r is default
+    --awful.key({ modkey }, "a", function()
+    --awful.util.spawn(terminal.." -e echo 'awesome.restart()' | awesome-client") end,
+    --  {description = "launch ranger", group = "launcher"}),
+    
+    --awful.key({ modkey }, "a", function()
+    --awful.util.spawn(terminal.." -e echo 'awesome.restart()' | awesome-client") end,
+    --  {description = "launch ranger", group = "launcher"}),
+
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -346,6 +401,8 @@ clientkeys = gears.table.join(
         end,
         {description = "toggle fullscreen", group = "client"}),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
+              {description = "close", group = "client"}),
+    awful.key({ modkey }, "q",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
@@ -499,7 +556,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
+      }, properties = { titlebars_enabled = false }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
@@ -564,9 +621,9 @@ client.connect_signal("request::titlebars", function(c)
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c)
-    c:emit_signal("request::activate", "mouse_enter", {raise = false})
-end)
+-- client.connect_signal("mouse::enter", function(c)
+--    c:emit_signal("request::activate", "mouse_enter", {raise = false})
+--end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
