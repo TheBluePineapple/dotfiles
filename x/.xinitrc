@@ -9,7 +9,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 
-bind -x '"\C-l": clear; ls'
+#export ZDOTDIR = $HOME/.config/zsh
 # merge in defaults and keymaps
 
 #if [ -f $sysresources ]; then
@@ -45,5 +45,6 @@ bind -x '"\C-l": clear; ls'
 
 
 #Added by TBP
+xbanish &
 exec awesome
 # feh --bg-scale $HOME/wallpapers/arch_baron &

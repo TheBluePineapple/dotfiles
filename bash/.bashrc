@@ -18,6 +18,8 @@ alias resa="echo 'awesome.restart()' | awesome-client"
 alias feh='feh -.Z'
 alias dots='cd ~/dotfiles'
 #alias clear='tput -x clear'
+bind -x '"\C-l": clear; pfetch; ls'
+
 #export PATH="/usr/bin/librewolf:$HOME/.local/bin/lvim:$HOME/.local/bin/lvide:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 PS1='[\u@\h \W]\$ '

@@ -20,6 +20,13 @@ lvim.colorscheme = "lunar"
 lvim.leader = "space"
 
 -- add your own keymapping
+--lvim.keys.visual_mode["C-c"] = " :!xclip -f -sel clip<CR>"
+--lvim.keys.normal_mode["C-S-v"] = " mz:-1r !xclip -o -sel clip<CR>`z"
+--lvim.keys.insert_mode["C-S-v"] = " mz:-1r !xclip -o -sel clip<CR>`z"
+vim.keymap.set('v','<C-c>',' :!xclip -f -sel clip<CR>')
+vim.keymap.set({'i','n'},'<C-S-v>', ' mz:-1r !xclip -o -sel clip<CR>`z')
+
+
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.insert_mode["jk"] = "<ESC>:w<CR>"
 -- vim.cmd("set timeoutlen=300")
