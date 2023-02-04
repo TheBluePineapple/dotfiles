@@ -5,9 +5,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
+#alias ls='ls --color=auto'
 set -o vi
-alias la='ls -lah'
+#alias la='ls -lah'
+alias ls='lsd'
+alias la='lsd -lah'
 alias resa="echo 'awesome.restart()' | awesome-client"
 alias feh='feh -.Z'
 

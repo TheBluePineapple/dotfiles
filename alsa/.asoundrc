@@ -17,3 +17,7 @@ pcm.!default {
 ctl.!default {
     type pipewire
 }
+pcm.dsp {
+	type plug
+	slave.cpm "dmix"
+}
