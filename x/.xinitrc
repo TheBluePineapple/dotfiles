@@ -5,6 +5,11 @@ userresources=$HOME/.Xresources
 sysresources=/etc/X11/xinit/.Xresources
 #sysmodmap=/etc/X11/xinit/.Xmodmap
 
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+
+bind -x '"\C-l": clear; ls'
 # merge in defaults and keymaps
 
 #if [ -f $sysresources ]; then
