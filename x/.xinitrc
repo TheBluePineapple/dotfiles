@@ -47,4 +47,6 @@ export XDG_DATA_HOME=$HOME/.local/share
 #Added by TBP
 xbanish &
 exec awesome
+alacritty &
+amixer set Master 100% 
 # feh --bg-scale $HOME/wallpapers/arch_baron &
