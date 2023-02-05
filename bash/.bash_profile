@@ -12,5 +12,6 @@
 #fi
 startx
 brightnessctl set 7%
+amixer set Master 100%
 [[ -f ~/.bashrc ]] && . ~/.bashrc
-. "$HOME/.cargo/env"
+#. "$HOME/.cargo/env"

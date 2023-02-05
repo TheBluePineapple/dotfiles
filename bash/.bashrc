@@ -13,7 +13,8 @@ export XDG_DATA_HOME=$HOME/.local/share
 set -o vi
 #alias la='ls -lah'
 alias ls='lsd'
-alias la='lsd -lah'
+alias lsa='lsd -a'
+alias la='lsd -la'
 alias resa="echo 'awesome.restart()' | awesome-client"
 alias feh='feh -.Z'
 alias dots='cd ~/dotfiles'
