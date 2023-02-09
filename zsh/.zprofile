@@ -1,3 +1,6 @@
+#emulate sh -c 'source /etc/profile'
+export DISPLAY=:0
 amixer set Master 100% 
 brightnessctl set 7%
-startx
+echo zprofile
+#sudo startx

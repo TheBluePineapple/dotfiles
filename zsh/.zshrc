@@ -134,5 +134,7 @@ alias dots='cd ~/dotfiles'
 
 
 #services/startup
+echo 
 pfetch
-lsa
+echo zshrc
+#lsa
