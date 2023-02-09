@@ -9,8 +9,17 @@
 # All imports must either be absolute paths starting with `/`, or paths relative
 # to the user's home directory starting with `~/`.
 import:
-  - ~/.tokyonight_storm.yml
-  #  - ~/.dracula.yml
+  #- ~/.alacritty_themes/
+  - ~/.alacritty_themes/dracula.yaml
+  #- ~/.alacritty_themes/catpuccin/catppuccin-mocha.yml
+  #- ~/.alacritty_themes/one_dark.yaml
+  #- ~/.alacritty_themes/tokyo-night-storm.yaml
+  #- ~/.alacritty_themes/monokai_charcoal.yaml
+  #- ~/.alacritty_themes/ayu_dark.yaml
+  #- ~/.alacritty_themes/argonaut.yaml
+  #- ~/.alacritty_themes/Cobalt2.yaml
+  #- ~/.alacritty_themes/solarized_dark.yaml
+  #- ~/.alacritty_themes/everforest_dark.yml
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
@@ -440,7 +449,7 @@ draw_bold_text_with_bright_colors: true
 #   - (Linux/BSD/macOS) `$SHELL` or the user's login shell, if `$SHELL` is unset
 #   - (Windows) powershell
 shell:
-#  program: /bin/zsh
+  program: /bin/zsh
 #  args:
 #    - --login
 

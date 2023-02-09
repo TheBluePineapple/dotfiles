@@ -43,4 +43,4 @@ fi
 . "$Z4H"/z4h.zsh || return
 
 setopt rcs
-echo zsh_env
+#echo zsh_env

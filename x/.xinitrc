@@ -48,5 +48,6 @@ export XDG_DATA_HOME=$HOME/.local/share
 xbanish &
 exec awesome
 alacritty &
+brightnessctl set 15%
 amixer set Master 100% 
 # feh --bg-scale $HOME/wallpapers/arch_baron &
