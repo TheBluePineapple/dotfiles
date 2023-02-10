@@ -96,6 +96,9 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
                                     { "open terminal", terminal }
                                   }
                         })
+
+beautiful.taglist_spacing = 5;
+
 praisewidget = wibox.widget.textbox()
 praisewidget.text = "ur grate!"
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
@@ -110,7 +113,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock(" %a %b %d, %I:%M ")
 
 --not currently in use
 local mybatterybar = wibox.widget {
@@ -236,9 +239,13 @@ awful.screen.connect_for_each_screen(function(s)
         filter  = awful.widget.tasklist.filter.currenttags,
         buttons = tasklist_buttons
     }
-
+    
+  -- theme.systray_icon_spocing = 6
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = 40 })
+    
+    -- systray_icon_spocing  
+    --systray_widget:set_base_size(20)
 
     -- Add widgets to the wibox
     s.mywibox:setup {

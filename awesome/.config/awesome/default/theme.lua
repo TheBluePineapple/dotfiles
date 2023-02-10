@@ -13,6 +13,8 @@ local home = os.getenv("HOME")
 local theme = {}
 
 theme.font          = "Hack Nerd Font Mono 10"
+theme.taglist_font  = "Hack Nerd Font Mono 25"
+theme.systray_icon_spacing = 6
 
 theme.fg_normal  = "#F8F8F2"
 theme.fg_focus   = "#F8F8F2"
@@ -49,7 +51,7 @@ theme.border_marked = "#FF5555"
 --theme.taglist_bg_focus = "#ff0000"
 theme.mouse_finder_color = "#FF5555"
 -- Generate taglist squares:
-local taglist_square_size = dpi(4)
+local taglist_square_size = dpi(8)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
     taglist_square_size, theme.fg_normal
 )
