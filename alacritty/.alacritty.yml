@@ -384,24 +384,24 @@ draw_bold_text_with_bright_colors: true
   #
   #command: None
 
-#selection:
+selection:
   # This string contains all characters that are used as separators for
   # "semantic words" in Alacritty.
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
   # When set to `true`, selected text will be copied to the primary clipboard.
-  #save_to_clipboard: false
+  save_to_clipboard: true 
 
-#cursor:
+cursor:
   # Cursor style
-  #style:
+  style:
     # Cursor shape
     #
     # Values for `shape`:
     #   - ▇ Block
     #   - _ Underline
     #   - | Beam
-    #shape: Block
+    shape: Block
 
     # Cursor blinking state
     #
@@ -410,7 +410,7 @@ draw_bold_text_with_bright_colors: true
     #   - Off: Disable blinking by default
     #   - On: Enable blinking by default
     #   - Always: Force the cursor to always blink
-    #blinking: Off
+    blinking: Always
 
   # Vi mode cursor style
   #
@@ -421,7 +421,7 @@ draw_bold_text_with_bright_colors: true
   #vi_mode_style: None
 
   # Cursor blinking interval in milliseconds.
-  #blink_interval: 750
+  blink_interval: 750
 
   # Time after which cursor stops blinking, in seconds.
   #
@@ -430,14 +430,14 @@ draw_bold_text_with_bright_colors: true
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
-  #unfocused_hollow: true
+  unfocused_hollow: true
 
   # Thickness of the cursor relative to the cell width as floating point number
   # from `0.0` to `1.0`.
-  #thickness: 0.15
+  thickness: 0.15
 
 # Live config reload (changes require restart)
-#live_config_reload: true
+live_config_reload: true
 
 # Shell
 #
@@ -481,9 +481,9 @@ shell:
 #
 # Terminal hints can be used to find text or hyperlink in the visible part of
 # the terminal and pipe it to other applications.
-#hints:
+hints:
   # Keys used for the hint labels.
-  #alphabet: "jfkdls;ahgurieowpq"
+  alphabet: "jfkdls;ahgurieowpq"
 
   # List with all available hints
   #
@@ -769,6 +769,7 @@ shell:
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
 #key_bindings:
+  # NOT WORKING, TRYING TO OPEN NEW TERM IN SAME DIRECTORY- { key: N, mods: Super|Shift, action: SpawnNewInstance } 
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }

@@ -19,8 +19,8 @@ theme.systray_icon_spacing = 6
 theme.fg_normal  = "#F8F8F2"
 theme.fg_focus   = "#F8F8F2"
 theme.fg_urgent  = "#FF5555"
-theme.bg_normal  = "#282A36"
-theme.bg_focus   = "#44475A"
+theme.bg_normal  = "#282A3688" --last 2 digits transparency
+theme.bg_focus   = "#44475Abb" --last two digits transparency
 theme.bg_urgent  = "#282A36"
 theme.bg_systray = theme.bg_normal
 
@@ -29,7 +29,7 @@ theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
-theme.useless_gap   = dpi(8)
+theme.useless_gap   = dpi(5)
 theme.border_width  = dpi(3)
 theme.border_normal = "#44475A"
 theme.border_focus  = "#6272A4" 
@@ -104,7 +104,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper =home.."/.config/awesome/default/wallpapers/slav_squat.jpg"
+theme.wallpaper =home.."/.config/awesome/default/wallpapers/synthwave_arch.jpeg"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"

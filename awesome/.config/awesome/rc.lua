@@ -242,7 +242,7 @@ awful.screen.connect_for_each_screen(function(s)
     
   -- theme.systray_icon_spocing = 6
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = 40 })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = 40, bg = beautiful.bg_normal .. "33" })
     
     -- systray_icon_spocing  
     --systray_widget:set_base_size(20)
