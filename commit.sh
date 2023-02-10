@@ -4,7 +4,7 @@ pacman -Qe > ~/dotfiles/info/pacman.txt
 yay -Qe > ~/dotfiles/info/yay.txt
 
 echo stowing dotfiles...
-stow */
+stow */ ^/info
 echo updating git repository...
 git add .
 if [ -z "$1" ]
