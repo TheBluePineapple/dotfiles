@@ -113,7 +113,7 @@ setopt no_auto_menu  # require an extra TAB press to open the completion menu
 
 #SETTINGS
 #set -o vi
-
+setopt extended_glob
 #ENV VARS AND ALIASING
 
 export PATH="$HOME/.local/bin:$HOME/.cargo/env:$PATH"
