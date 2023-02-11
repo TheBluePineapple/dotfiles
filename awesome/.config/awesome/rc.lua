@@ -529,6 +529,11 @@ awful.rules.rules = {
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen
      }
     },
+    -- things that you don't want to float
+    {
+      rule = { class = "obsidian" },
+      properties = { floating = false },
+    },
 
     -- Floating clients.
     { rule_any = {
@@ -575,6 +580,14 @@ awful.rules.rules = {
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
+    -- only show titlebar if the window is floating
+    client.connect_signal("property::floating", function(c)
+      if c.floating then
+        awful.titlebar.show(c)
+      else
+        awful.titlebar.hide(c)
+      end
+    end)
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
     -- if not awesome.startup then awful.client.setslave(c) end
@@ -589,6 +602,8 @@ end)
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
+    --force programs to fit in the given space when tiling
+    c.size_hints_honor = false
     -- buttons for the titlebar
     local buttons = gears.table.join(
         awful.button({ }, 1, function()

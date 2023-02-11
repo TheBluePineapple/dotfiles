@@ -129,7 +129,7 @@ alias la='lsd -la'
 alias resa="echo 'awesome.restart()' | awesome-client"
 alias feh='feh -.Z'
 alias dots='cd ~/dotfiles'
-alias mpv='mpv --no-keepaspect-window'
+#alias mpv='mpv --no-keepaspect-window'
 #alias clear='tput -x clear'
 #bind -x '"\C-l": clear; pfetch; ls'
 
@@ -137,5 +137,7 @@ alias mpv='mpv --no-keepaspect-window'
 #services/startup
 echo 
 clear
-pfetch
+nitch
+#pfetch
+#neofetch
 #lsa
