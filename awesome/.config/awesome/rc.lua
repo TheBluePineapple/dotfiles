@@ -48,7 +48,6 @@ end
 -- Themes define colours, icons, font and wallpapers.
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 beautiful.init(home .. "/.config/awesome/default/theme.lua")
-
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
 editor = os.getenv("EDITOR") or "nvim"
@@ -84,6 +83,7 @@ awful.layout.layouts = {
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
+--beautiful.awesome_icon = "~/Downloads/arch_logo.png"
 myawesomemenu = {
    { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
    { "manual", terminal .. " -e man awesome" },
@@ -242,7 +242,7 @@ awful.screen.connect_for_each_screen(function(s)
     
   -- theme.systray_icon_spocing = 6
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = 40, bg = beautiful.bg_normal .. "33" })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = 25, bg = beautiful.bg_normal .. "33" })
     
     -- systray_icon_spocing  
     --systray_widget:set_base_size(20)
@@ -580,6 +580,24 @@ awful.rules.rules = {
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
+    -- custom icon theme UNUSED RICE
+     if c.instance ~= nil then
+      local icon = menubar.utils.lookup_icon(c.instance)
+      local lower_icon = menubar.utils.lookup_icon(c.instance:lower())
+      if icon ~= nil then
+        local new_icon =gears.surface(icon) 
+        c.icon = new_icon._native
+      elseif lower_icon ~= nil then 
+        local new_icon = gears.surface(lower_icon)
+        c.icon = new_icon._native
+      elseif c.icon == nil then
+        local new_icon = gears.surface(menubar.utils.lookup_icon("application-default-icon"))
+        c.icon = new_icon._native
+      end
+    else
+      local new_icon = gears.surface(menubar.utils.lookup_icon("application-default-icon"))
+      c.icon = new_icon._native
+    end   
     -- only show titlebar if the window is floating
     client.connect_signal("property::floating", function(c)
       if c.floating then
