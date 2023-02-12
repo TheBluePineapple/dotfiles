@@ -129,11 +129,19 @@ alias la='lsd -la'
 alias resa="echo 'awesome.restart()' | awesome-client"
 alias feh='feh -.Z'
 alias dots='cd ~/dotfiles'
+
+
+
+# Have be able to record combinations of desktop audio, mic audio, desktop, and webcam
 RES=`xrandr | awk -F'[ +]' '/primary/{print $4}'`
-alias screenshot='ffmpeg -f x11grab -framerate 1 -video_size $RES -i :0.0 -vframes 1 ' #output.jpeg(must specify output file)
+alias screenshot='echo "screenshot in 3 seconds" && sleep 3 && ffmpeg -f x11grab -framerate 1 -video_size $RES -i :0.0 -vframes 1 ' #output.jpeg(must specify output file)
 alias screenrecord='ffmpeg -f x11grab -s $RES -i :0.0' # (must specify output file) f: format, not everything is a file, record screen, x11grab: take whatever is on screen as input, s: screensize i: input file :0.0 is the default screen out.mkv: the file output
-alias screencast='ffmpeg -f x11grab -s $RES -i :0.0 -f alsa -i default' # (must specify output file) f: format, not everything is a file, record screen, x11grab: take whatever is on screen as input, s: screensize i: input file :0.0 is the default screen out.mkv: the file output
-alias record='ffmpeg -i /dev/video0' #record with webcam, must specify output file
+#alias screencast='ffmpeg -f x11grab -s $RES -i :0.0 -f alsa -i default' # (must specify output file) f: format, not everything is a file, record screen, x11grab: take whatever is on screen as input, s: screensize i: input file :0.0 is the default screen out.mkv: the file output
+alias screencast='ffmpeg -f x11grab -s $RES -i :0.0 -f alsa -ac 2 -i hw:0 -use_wallclock_as_timestamps 1' # (must specify output file) f: format, not everything is a file, record screen, x11grab: take whatever is on screen as input, s: screensize i: input file :0.0 is the default screen out.mkv: the file output
+# f alsa -ac 2 -i hw:0
+#alias record='ffmpeg -i /dev/video0 ' #record with webcam, must specify output file
+#alias record='ffmpeg -i /dev/video0' #record with audio AND video
+
 #ffmpeg -f x11grab -framerate 1 -video_size 1600x900 -i :0.0 -vframes 1 output2.jpeg
 
 #alias mpv='mpv --no-keepaspect-window'
