@@ -129,6 +129,13 @@ alias la='lsd -la'
 alias resa="echo 'awesome.restart()' | awesome-client"
 alias feh='feh -.Z'
 alias dots='cd ~/dotfiles'
+RES=`xrandr | awk -F'[ +]' '/primary/{print $4}'`
+alias screenshot='ffmpeg -f x11grab -framerate 1 -video_size $RES -i :0.0 -vframes 1 ' #output.jpeg(must specify output file)
+alias screenrecord='ffmpeg -f x11grab -s $RES -i :0.0' # (must specify output file) f: format, not everything is a file, record screen, x11grab: take whatever is on screen as input, s: screensize i: input file :0.0 is the default screen out.mkv: the file output
+alias screencast='ffmpeg -f x11grab -s $RES -i :0.0 -f alsa -i default' # (must specify output file) f: format, not everything is a file, record screen, x11grab: take whatever is on screen as input, s: screensize i: input file :0.0 is the default screen out.mkv: the file output
+alias record='ffmpeg -i /dev/video0' #record with webcam, must specify output file
+#ffmpeg -f x11grab -framerate 1 -video_size 1600x900 -i :0.0 -vframes 1 output2.jpeg
+
 #alias mpv='mpv --no-keepaspect-window'
 #alias clear='tput -x clear'
 #bind -x '"\C-l": clear; pfetch; ls'
