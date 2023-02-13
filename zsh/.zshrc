@@ -4,6 +4,9 @@
 #
 # Documentation: https://github.com/romkatv/zsh4humans/blob/v5/README.md.
 
+HISTSIZE=5000
+SAVEHIST=5000
+
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
 # Periodic auto-update on Zsh startup: 'ask' or 'no'.
@@ -130,17 +133,25 @@ alias resa="echo 'awesome.restart()' | awesome-client"
 alias feh='feh -.Z'
 alias dots='cd ~/dotfiles'
 
+#Add 80's(https://www.youtube.com/watch?v=djV11Xbc914&list=PLCD0445C57F2B7F41), Stake, 2000s, Powerwolf(https://www.youtube.com/watch?v=4hshdNgEwTw&list=PLTqLptwSqnw6rW-Pa-5L7ryvcGjMe_rMk)
+DJB="https://youtube.com/playlist?list=PLzj5GT2RkVUw1BuTWya6oPNlEGe2y8IYO"
+HB="https://www.youtube.com/playlist?list=PLcRf8jmIXme3EmidIIywmYSVliqoSy-4g"
+HB2="https://www.youtube.com/watch?v=QiFBgtgUtfw&list=PLaSEGJ7Uk6tNv6x0vUSrVUOKrMclJphgk"
+HB3="https://www.youtube.com/watch?v=yL4eIUTovLM&list=PLr8OFJdMNnyK6P3KFgcapuA9jbLe0ezUj"
+HB4="https://www.youtube.com/watch?v=fro6je9L5kg&list=PLKC_G6D4dEWsKEnxurb02lnWF5lDpgvbQ"
+HBS="https://www.youtube.com/playlist?list=PL9WjPaLKxYbg5_gYsT0cXsGuzJLdWKHMO"
+HBSC="https://www.youtube.com/playlist?list=OLAK5uy_kXwwqc69fOkbzgupAyYH8fHRQbVokhAbs"
 
+alias playlist='mpv --shuffle --ytdl-raw-options="cookies=${cookies_file}"'
 
 # Have be able to record combinations of desktop audio, mic audio, desktop, and webcam
 RES=`xrandr | awk -F'[ +]' '/primary/{print $4}'`
-alias screenshot='echo "screenshot in 3 seconds" && sleep 3 && ffmpeg -f x11grab -framerate 1 -video_size $RES -i :0.0 -vframes 1 ' #output.jpeg(must specify output file)
+alias screenshot='echo "screenshot in 3 seconds" && sleep 3 && ffmpeg -loglevel quiet -f x11grab -framerate 1 -video_size $RES -i :0.0 -vframes 1 ' #output.jpeg(must specify output file)
 alias screenrecord='ffmpeg -f x11grab -s $RES -i :0.0' # (must specify output file) f: format, not everything is a file, record screen, x11grab: take whatever is on screen as input, s: screensize i: input file :0.0 is the default screen out.mkv: the file output
 #alias screencast='ffmpeg -f x11grab -s $RES -i :0.0 -f alsa -i default' # (must specify output file) f: format, not everything is a file, record screen, x11grab: take whatever is on screen as input, s: screensize i: input file :0.0 is the default screen out.mkv: the file output
-alias screencast='ffmpeg -f x11grab -s $RES -i :0.0 -f alsa -ac 2 -i hw:0 -use_wallclock_as_timestamps 1' # (must specify output file) f: format, not everything is a file, record screen, x11grab: take whatever is on screen as input, s: screensize i: input file :0.0 is the default screen out.mkv: the file output
+#alias screencast='ffmpeg -f x11grab -s $RES -i :0.0 -f alsa -ac 2 -i hw:0 -use_wallclock_as_timestamps 1' # (must specify output file) f: format, not everything is a file, record screen, x11grab: take whatever is on screen as input, s: screensize i: input file :0.0 is the default screen out.mkv: the file output
 # f alsa -ac 2 -i hw:0
-#alias record='ffmpeg -i /dev/video0 ' #record with webcam, must specify output file
-#alias record='ffmpeg -i /dev/video0' #record with audio AND video
+alias record='ffmpeg -i /dev/video0 ' #record with webcam, must specify output file
 
 #ffmpeg -f x11grab -framerate 1 -video_size 1600x900 -i :0.0 -vframes 1 output2.jpeg
 
