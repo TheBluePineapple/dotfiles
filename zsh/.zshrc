@@ -125,6 +125,8 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 
+export WALLPAPER=$HOME/.config/awesome/default/wallpapers/gopniks_squating.jpg
+#export ZDOTDIR = $HOME/.config/zsh
 
 alias ls='lsd --color always'
 alias lsa='lsd -a'

@@ -9,6 +9,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 
+export WALLPAPER=$HOME/.config/awesome/default/wallpapers/synthwave_arch.jpeg
 #export ZDOTDIR = $HOME/.config/zsh
 # merge in defaults and keymaps
 
@@ -50,4 +51,4 @@ exec awesome
 alacritty &
 brightnessctl set 15%
 amixer set Master 100% 
-# feh --bg-scale $HOME/wallpapers/arch_baron &
+feh --bg-scale $HOME/wallpapers/arch_baron &

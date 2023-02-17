@@ -207,7 +207,8 @@ screen.connect_signal("property::geometry", set_wallpaper)
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
-
+    --awful.util.spawn.with_shell("~/.fehbg &")
+  --awesome.spawn.with_shell("feh --bg-scale ~/Pictures/Wallpapers/wallpaper-1866931.jpg")    
     -- Each screen has its own tag table.
     --awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
   --
@@ -671,5 +672,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Autostart Applications
 awful.spawn.with_shell("picom")
+--awful.spawn.with_shell("feh")
 --awful.spawn.with_shell("nitrogen --restore")
 

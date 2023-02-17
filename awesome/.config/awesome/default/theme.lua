@@ -10,6 +10,8 @@ local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 
 local home = os.getenv("HOME")
+local wallpaper = os.getenv("WALLPAPER")
+
 local theme = {}
 
 theme.font          = "Hack Nerd Font Mono 10"
@@ -30,7 +32,7 @@ theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
 theme.useless_gap   = dpi(5)
-theme.border_width  = dpi(3)
+theme.border_width  = dpi(2)
 theme.border_normal = "#44475A"
 theme.border_focus  = "#6272A4" 
 -- theme.border_focus  = "#bd93F9" 
@@ -105,6 +107,7 @@ theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/m
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
 theme.wallpaper =home.."/.config/awesome/default/wallpapers/synthwave_arch.jpeg"
+--theme.wallpaper = wallpaper
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
