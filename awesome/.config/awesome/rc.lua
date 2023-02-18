@@ -283,11 +283,18 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "b", function()
     awful.util.spawn("librewolf") end,
       {description = "launch librewolf", group = "launcher"}),
-  
+    awful.key({ modkey }, "c", function()
+    awful.util.spawn(terminal.." -e htop") end,
+      {description = "launch htop", group = "launcher"}),
+    awful.key({ modkey }, "a", function()
+    awful.util.spawn(terminal.." -e alsamixer")
+    awful.util.spawn(terminal.." -e mocp")
+    awful.util.spawn(terminal.." -e vis")
+    end,
+      {description = "launch mocp, alsamixer, and vis", group = "launcher"}),
     awful.key({ modkey }, "v", function()
     awful.util.spawn("lvide") end,
-      {description = "launch lunarvim in lvde", group = "launcher"}),
-
+      {description = "launch lunarvim in lvide", group = "launcher"}),
     awful.key({ modkey }, "e", function()
     awful.util.spawn(terminal.." -e ranger") end,
       {description = "launch ranger", group = "launcher"}),
