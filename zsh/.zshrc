@@ -128,12 +128,15 @@ export XDG_DATA_HOME=$HOME/.local/share
 export WALLPAPER=$HOME/.config/awesome/default/wallpapers/gopniks_squating.jpg
 #export ZDOTDIR = $HOME/.config/zsh
 
+
+alias history='cat ~/.zsh_history | rg'
 alias ls='lsd --color always'
 alias lsa='lsd -a'
 alias la='lsd -la'
 alias resa="echo 'awesome.restart()' | awesome-client"
 alias feh='feh -.Z'
 alias dots='cd ~/dotfiles'
+alias sudo='doas'
 
 #Add 80's(https://www.youtube.com/watch?v=djV11Xbc914&list=PLCD0445C57F2B7F41), Stake, 2000s, Powerwolf(https://www.youtube.com/watch?v=4hshdNgEwTw&list=PLTqLptwSqnw6rW-Pa-5L7ryvcGjMe_rMk)
 DJB="https://youtube.com/playlist?list=PLzj5GT2RkVUw1BuTWya6oPNlEGe2y8IYO"

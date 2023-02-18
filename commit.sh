@@ -1,7 +1,11 @@
 #!/bin/bash
 echo updating package list...
-pacman -Qe > ~/dotfiles/info/info/pacman.txt
-yay -Qe > ~/dotfiles/info/info/yay.txt
+pacman -Qem > ~/dotfiles/info/info/aur-v.txt
+pacman -Qeqm > ~/dotfiles/info/info/aur.txt
+pacman -Qen > ~/dotfiles/info/info/pacman-v.txt
+pacman -Qeqn > ~/dotfiles/info/info/pacman.txt
+#yay -Qe > ~/dotfiles/info/info/yay-v.txt
+#yay -Qeq > ~/dotfiles/info/info/yay.txt
 
 echo stowing dotfiles...
 stow */ # --ignore info

@@ -1,0 +1,7 @@
+ff2mpv-native-messaging-host-librewolf-git
+librewolf-bin
+nitch
+peaclock
+pfetch
+xbanish
+yay

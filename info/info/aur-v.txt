@@ -1,0 +1,7 @@
+ff2mpv-native-messaging-host-librewolf-git r69.8f77b78-1
+librewolf-bin 109.0-1
+nitch 0.1.6-2
+peaclock 0.4.3-1
+pfetch 0.6.0-3
+xbanish 1.8-1
+yay 11.3.2-1
