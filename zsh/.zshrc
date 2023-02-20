@@ -119,7 +119,7 @@ setopt no_auto_menu  # require an extra TAB press to open the completion menu
 setopt extended_glob
 #ENV VARS AND ALIASING
 
-export PATH="$HOME/.local/bin:$HOME/.cargo/env:$PATH"
+export PATH="/usr/bin/pass:/$HOME/.local/bin:$HOME/.cargo/env:$PATH"
 
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
@@ -130,6 +130,9 @@ export WALLPAPER=$HOME/.config/awesome/default/wallpapers/gopniks_squating.jpg
 
 
 alias history='cat ~/.zsh_history | rg'
+alias udeps='pacman -Qdt'
+alias pac-cache-clear='pacman -Sc'
+
 alias ls='lsd --color always'
 alias lsa='lsd -a'
 alias la='lsd -la'

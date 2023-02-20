@@ -32,6 +32,7 @@ htop
 i2pd
 intel-ucode
 iwd
+julia
 libpulse
 libreoffice-still
 libtool
@@ -60,7 +61,6 @@ opendoas
 pacman
 pass
 patch
-pcmanfm
 picom
 pipewire
 pipewire-alsa
@@ -78,6 +78,7 @@ taskwarrior-tui
 texinfo
 tmux
 torbrowser-launcher
+torsocks
 tree
 ttf-dejavu
 ttf-hack-nerd

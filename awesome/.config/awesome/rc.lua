@@ -116,6 +116,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 mytextclock = wibox.widget.textclock(" %a %b %d, %I:%M ")
 
 --not currently in use
+--[[
 local mybatterybar = wibox.widget {
   {
     min_value = 0,
@@ -148,6 +149,8 @@ gears.timer {
     -- mybatterybar.battery =
   end
 }
+--]]
+
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
