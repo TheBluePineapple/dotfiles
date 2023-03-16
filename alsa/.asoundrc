@@ -1,17 +1,3 @@
-##make sure you use the right card
-defaults.pcm.card 1
-defaults.ctl.card 1
-#utilize the correct card
-pcm.!default {
-	type hw
-	card 1
-	device 0
-}
-ctl.!default {
-	type hw
-	card 1
-}
-#this one is necessary for mocp to work
 pcm.!default {
     type pipewire
     playback_node "-1"
@@ -21,23 +7,17 @@ pcm.!default {
         description "Default ALSA Output (currently PipeWire Media Server)"
     }
 }
-#The next four make other audio work, except you don't need them, just the one above, I'm slightly confused
-#Just kidding they actually make everything break lol
-# pcm.!default {
-# 	type plug
-# 	slave.pcm "dmix:PCM,0"
-# }
-# pcm.!default {
-# 	type file
-# 	slave.pcm "hw:0,0"
-# 	file "|safe_fifo /tmp/audio"
-# 	format raw
-# 	perm 0666
-# }
-# ctl.!default {
-#     type pipewire
-# }
-# pcm.dsp {
-# 	type plug
-# 	slave.cpm "dmix"
-# }
+pcm.!default {
+	type file
+	slave.pcm "hw:0,0"
+	file "|safe_fifo /tmp/audio"
+	format raw
+	perm 0666
+}
+ctl.!default {
+    type pipewire
+}
+pcm.dsp {
+	type plug
+	slave.cpm "dmix"
+}

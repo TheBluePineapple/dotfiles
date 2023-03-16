@@ -18,8 +18,6 @@ alias la='lsd -la'
 alias resa="echo 'awesome.restart()' | awesome-client"
 alias feh='feh -.Z'
 alias dots='cd ~/dotfiles'
-alias amixer='amixer -c 0'
-alias alsamixer='alsamixer -c 0'
 #alias clear='tput -x clear'
 bind -x '"\C-l": clear; pfetch; ls'
 
@@ -28,3 +26,23 @@ export PATH="$HOME/.local/bin:$PATH"
 PS1='[\u@\h \W]\$ '
 PS1='[\u@\h \W]\$ '
 . "$HOME/.cargo/env"
+
+##-----------------------------------------------------
+## synth-shell-prompt.sh
+if [ -f /home/blue/.config/synth-shell/synth-shell-prompt.sh ] && [ -n "$( echo $- | grep i )" ]; then
+	source /home/blue/.config/synth-shell/synth-shell-prompt.sh
+fi
+
+##-----------------------------------------------------
+## alias
+if [ -f /home/blue/.config/synth-shell/alias.sh ] && [ -n "$( echo $- | grep i )" ]; then
+	source /home/blue/.config/synth-shell/alias.sh
+fi
+
+##-----------------------------------------------------
+## better-history
+if [ -f /home/blue/.config/synth-shell/better-history.sh ] && [ -n "$( echo $- | grep i )" ]; then
+	source /home/blue/.config/synth-shell/better-history.sh
+fi
+
+pfetch

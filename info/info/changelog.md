@@ -1,10 +1,5 @@
 TEST
 
-prevent vol change when detect headphones plugged in /etc/pulse/default.pa
-network in /etc/runit/1
-perms in /etc/doas.conf
-arch/aur in /etc/pacman.conf
-
 make sure to regen gpg keys
 make sure to add pass and mpv native messaging hosts to librewolf
 make sure to install rust and lunarvim from repos
@@ -20,26 +15,20 @@ synth-shell
 cli-visualizer
 
 # Programs
-
 - xdg-settings
 
 # Variables
-
 - $PATH
 
 # Files
-
 - /etc/systemd/resolved.conf
 - /etc/doas.conf
 - /etc/pacman.conf
-
 # Added
-
 lvide - copy the scripts that launches lvide, path to script added to $PATH in bashrc
 ~/.local/bin/lvide
 
 # TODO
-
 - polybar / wibar
 - rofi / dmenu
 - conky / awesome
