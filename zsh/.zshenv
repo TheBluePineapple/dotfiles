@@ -44,3 +44,4 @@ fi
 
 setopt rcs
 #echo zsh_env
+. "$HOME/.cargo/env"

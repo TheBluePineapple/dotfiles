@@ -1,0 +1,3 @@
+#Config: https://docs.helix-editor.com/configuration.html
+#Keymaps: https://docs.helix-editor.com/remapping.html
+theme = "dracula_at_night"

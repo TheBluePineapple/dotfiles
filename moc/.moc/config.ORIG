@@ -69,12 +69,12 @@
 #
 # Example:    MusicDir = "/home/joe/music"
 #
-MusicDir = "/home/blue/Downloads/music/"
+MusicDir = "/home/blue/Downloads/music"
 
 # Start in the music directory by default?  If set to 'no', start
 # in the current directory by default.  A single directory on
 # the command line takes precedence.
-StartInMusicDir = no
+StartInMusicDir = yes
 
 # How to sort?  FileName is the option's only value for now.
 #Sort = FileName
@@ -124,7 +124,7 @@ StartInMusicDir = no
 # Sound driver - OSS, ALSA, JACK, SNDIO (on OpenBSD) or null (only for
 # debugging).  You can enter more than one driver as a colon-separated
 # list.  The first working driver will be used.
-SoundDriver = ALSA:JACK:OSS
+SoundDriver = JACK:ALSA:OSS
 
 # Jack output settings.
 #JackClientName = "moc"
@@ -219,7 +219,7 @@ SoundDriver = ALSA:JACK:OSS
 #
 # Example:    Theme = laras_theme
 #
-Theme = nightly_theme # nightly, darkdot, black
+Theme = darkdot_theme
 
 # The theme used when running on an xterm.
 #

@@ -44,11 +44,22 @@ export WALLPAPER=$HOME/.config/awesome/default/wallpapers/synthwave_arch.jpeg
 #xterm -geometry 80x20+494-0 &
 #exec xterm -geometry 80x66+0+0 -name login
 
+echo "Setting up audio"
+amixer -c 0 set Master 100%
+amixer -c 0 set Master unmute
+amixer -c 0 set Speaker 30%
+amixer -c 0 set Speaker mute
+amixer -c 0 set Headphone 10%
+amixer -c 0 set Headphone unmute
+
+
 
 #Added by TBP
 xbanish &
+pipewire &
+pipewire-pulse &
+wireplumber &
 exec awesome
 alacritty &
 brightnessctl set 15%
-amixer set Master 100% 
 feh --bg-scale $HOME/wallpapers/arch_baron &

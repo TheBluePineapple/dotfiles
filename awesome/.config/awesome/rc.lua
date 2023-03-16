@@ -59,7 +59,7 @@ beautiful.init(home .. "/.config/awesome/default/theme.lua")
 terminal = "alacritty"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
-gears.wallpaper.maximized(home .. "/.config/awesome/default/wallpapers/space2.jpg") -- /usr/share/awesome/lib/gears/wallpaper.lua
+-- gears.wallpaper.maximized(home .. "/.config/awesome/default/wallpapers/space2.jpg") -- /usr/share/awesome/lib/gears/wallpaper.lua
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -95,7 +95,8 @@ awful.layout.layouts = {
 -- https://icons8.com/icon/419/console
 -- https://icons8.com/icon/muqMY2QA2VIG/kali-linux
 -- https://icons8.com/icons/set/linux--white
-beautiful.awesome_icon = assets .. "/light_arch_linux_icon.svg"
+-- beautiful.awesome_icon = assets .. "/arch-linux-icon-white.svg"
+beautiful.awesome_icon = assets .. "/artix-linux-icon-material-design.png"
 myawesomemenu = {
 	{
 		"hotkeys",
@@ -298,7 +299,7 @@ awful.screen.connect_for_each_screen(function(s)
 
 	-- theme.systray_icon_spocing = 6
 	-- Create the wibox
-	s.mywibox = awful.wibar({ position = "top", screen = s, height = 25, bg = beautiful.bg_normal .. "33" })
+	s.mywibox = awful.wibar({ position = "top", screen = s, height = 25, bg = beautiful.bg_normal .. "aa" }) --,bg = beautiful.bg_normal .. "00" }) -- .. 33 concatinate 33/255 as transparency/opacity
 
 	-- systray_icon_spocing
 	--systray_widget:set_base_size(20)
@@ -338,6 +339,104 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+	-- TODO switch speaker to fn, default to headphone and shift to master
+	-- CHANGE BRIGHTNESS/VOLUME
+	-- Add caching brightness with brillo and restore at bottom with autostart applications
+	awful.key({}, "XF86MonBrightnessDown", function()
+		awful.util.spawn("doas brillo -s intel_backlight -q -U 1-")
+	end, { description = "lower brightness", group = "system" }),
+	awful.key({}, "XF86MonBrightnessUp", function()
+		awful.util.spawn("doas brillo -s intel_backlight -q -A 1")
+	end, { description = "raise brightness", group = "system" }),
+
+	--changes headphone volume
+	awful.key({}, "XF86AudioRaiseVolume", function()
+		awful.util.spawn("amixer -c 0 set Headphone 1%+")
+	end, { description = "raise headphone volume", group = "system" }),
+	awful.key({}, "XF86AudioLowerVolume", function()
+		awful.util.spawn("amixer -c 0 set Headphone 1%-")
+	end, { description = "lower headphone volume", group = "system" }),
+	awful.key({}, "XF86AudioMute", function()
+		awful.util.spawn("amixer -c 0 set Headphone toggle")
+	end, { description = "un/mute headphones", group = "system" }),
+
+	--changes Speaker volume
+	awful.key({}, "F3", function()
+		awful.util.spawn("amixer -c 0 set Speaker 1%+")
+	end, { description = "raise speaker volume", group = "system" }),
+	awful.key({}, "F2", function()
+		awful.util.spawn("amixer -c 0 set Speaker 1%-")
+	end, { description = "lower speaker volume", group = "system" }),
+	awful.key({}, "F4", function()
+		awful.util.spawn("amixer -c 0 set Speaker toggle")
+	end, { description = "un/mute speaker", group = "system" }),
+  
+	--rebalances volume to my presets
+	awful.key({"Mod1"}, "F4", function()
+		awful.util.spawn("amixer -c 0 set Master 100%"); 
+		awful.util.spawn("amixer -c 0 set Master unmute");
+		awful.util.spawn("amixer -c 0 set Speaker 30%");
+		awful.util.spawn("amixer -c 0 set Speaker mute");  
+		awful.util.spawn("amixer -c 0 set Headphone 35%");
+		awful.util.spawn("amixer -c 0 set Headphone unmute");
+		--awful.util.spawn("amixer -c 0 set Master 100% && amixer -c 0 set Master unmute && amixer -c 0 set Speaker 30% && amixer -c 0 set Speaker mute && amixer -c 0 set Headphone 35% && amixer -c 0 set Headphone unmute")
+	end, { description = "rebalance to preset volumes", group = "system" }),
+
+
+	awful.key({"Shift"}, "F3", function()
+		awful.util.spawn("amixer -c 0 set Master 1%+")
+	end, { description = "raise speaker master", group = "system" }),
+	awful.key({"Shift"}, "F2", function()
+		awful.util.spawn("amixer -c 0 set Master 1%-")
+	end, { description = "lower speaker master", group = "system" }),
+	awful.key({"Shift"}, "F4", function()
+		awful.util.spawn("amixer -c 0 set Master toggle")
+	end, { description = "un/mute master", group = "system" }),
+
+	
+	--fullscreen screenshot
+	-- ffmpeg -loglevel quiet -f x11grab -framerate 1 -video_size $RES -i :0.0 -vframes 1 ' #output.jpeg
+	awful.key({}, "Print", function()
+		-- awful.util.spawn("")
+		awful.prompt.run({
+			prompt = "<b>File: </b>",
+			text = "~/images/output.jpg",
+			bg_cursor = "#ff0000",
+			-- To use the default rc.lua prompt:
+			textbox = mouse.screen.mypromptbox.widget,
+			-- textbox = atextbox,
+			exe_callback = function(input)
+				if not input or #input == 0 then
+					return
+				end
+
+				-- awful.spawn(
+				-- 	'bash -c "ffmpeg -loglevel quiet -f x11grab -framerate 1 =video_size $RES -i :0.0 -vframes 1 '
+				-- 		.. input
+				-- 		.. '"'
+				-- 	-- 'bash -c "'
+				-- 	-- 	.. " ffmpeg -loglevel quiet -f x11grab -framerate 1 -video_size $RES -i :0.0 -vframes 1 "
+				-- 	-- 	.. input
+				-- 	-- 	.. '"'
+				-- )
+				-- take the screenshot, get the output
+				-- local command = [[bash -c '
+				-- ffmpeg -loglevel quiet -f x11grab -framerate 1 -video_size $RES -i :0.0 -vframes 1 ]] .. input .. [[
+				-- ']]
+				-- local command = "ffmpeg -loglevel quiet -f x11grab -framerate 1 -video_size $RES -i :0.0 -vframes 1 "
+				-- 				local output = [[bash -c '
+				-- ]] .. command .. input .. [[
+				-- ']]
+				-- 		awful.spawn.easy_async(command, function(stdout, stderr, reason, exit_code)
+				-- 			naughty.notify({ text = "The output was " .. stdout })
+				-- 		end)
+				-- 		naughty.notify({ text = "The command was: " .. command })
+				naughty.notify({ text = "The input was: " .. input })
+			end,
+		})
+	end, { description = "take a fullscreen screenshot", group = "system" }),
+
+	-- LAUNCH APPLICATIONS
 	awful.key({ modkey }, "b", function()
 		awful.util.spawn("librewolf")
 	end, { description = "launch librewolf", group = "launcher" }),
@@ -345,7 +444,7 @@ globalkeys = gears.table.join(
 		awful.util.spawn(terminal .. " -e htop")
 	end, { description = "launch htop", group = "launcher" }),
 	awful.key({ modkey }, "a", function()
-		awful.util.spawn(terminal .. " -e alsamixer")
+		awful.util.spawn(terminal .. " -e alsamixer -c 0")
 		awful.util.spawn(terminal .. " -e mocp")
 		awful.util.spawn(terminal .. " -e vis")
 	end, { description = "launch mocp, alsamixer, and vis", group = "launcher" }),

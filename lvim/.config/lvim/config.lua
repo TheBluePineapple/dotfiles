@@ -67,7 +67,6 @@ vim.opt.spelllang = "en"
 vim.opt.scrolloff = 8 -- is one of my fav
 vim.opt.sidescrolloff = 8
 --]]
-
 if vim.g.neovide then
 	-- Put anything you want to happen only in Neovide here
 	-- https://neovide.dev/configuration.html
@@ -112,7 +111,11 @@ if vim.g.neovide then
 end
 
 require("lvim.lsp.manager").setup("emmet_ls")
-require("colorizer").setup()
+require("colorizer").setup({
+	"*",
+	css = { css = true },
+	html = { css = true, names = false },
+})
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- TODO keybinds for win create/resize splits,
@@ -259,7 +262,7 @@ formatters.setup({
 	{ command = "stylua", filetypes = { "lua" } },
 	{ command = "gofumpt", filetypes = { "go" } },
 	{
-		command = "prettier",
+		command = "prettierd",
 		filetypes = {
 			"javascript",
 			"typescript",

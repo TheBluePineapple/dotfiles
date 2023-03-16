@@ -20,6 +20,7 @@ zstyle ':z4h:bindkey' keyboard  'pc'
 
 # Start tmux if not already in tmux.
 #zstyle ':z4h:' start-tmux command tmux -u new -A -D -t z4h
+zstyle ':z4h:' start-tmux 'no'
 
 # Whether to move prompt to the bottom when zsh starts and on Ctrl+L.
 zstyle ':z4h:' prompt-at-bottom 'no'
@@ -49,7 +50,6 @@ zstyle ':z4h:ssh:*'                   enable 'no'
 # Send these files over to the remote host when connecting over SSH to the
 # enabled hosts.
 zstyle ':z4h:ssh:*' send-extra-files '~/.nanorc' '~/.env.zsh'
-
 # Clone additional Git repositories from GitHub.
 #
 # This doesn't do anything apart from cloning the repository and keeping it
@@ -121,6 +121,8 @@ setopt extended_glob
 
 export PATH="/usr/bin/pass:/$HOME/.local/bin:$HOME/.cargo/env:$PATH"
 
+export TERM=alacritty
+
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
@@ -140,6 +142,13 @@ alias resa="echo 'awesome.restart()' | awesome-client"
 alias feh='feh -.Z'
 alias dots='cd ~/dotfiles'
 alias sudo='doas'
+
+alias amixer='amixer -c 0'
+alias alsamixer='alsamixer -c 0'
+alias balance-audio='amixer -c 0 set Master 100% && amixer -c 0 set Master unmute && amixer -c 0 set Speaker 30% && amixer -c 0 set Speaker mute && amixer -c 0 set Headphone 35% && amixer -c 0 set Headphone unmute'
+
+
+
 
 #Add 80's(https://www.youtube.com/watch?v=djV11Xbc914&list=PLCD0445C57F2B7F41), Stake, 2000s, Powerwolf(https://www.youtube.com/watch?v=4hshdNgEwTw&list=PLTqLptwSqnw6rW-Pa-5L7ryvcGjMe_rMk)
 DJB="https://youtube.com/playlist?list=PLzj5GT2RkVUw1BuTWya6oPNlEGe2y8IYO"
